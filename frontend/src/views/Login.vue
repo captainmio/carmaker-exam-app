@@ -33,22 +33,16 @@
         </div>
       </div>
     </div>
-    <snackbar
-      v-if="snackbar.show"
-      :message="snackbar.message"
-      :type="snackbar.type"
-    ></snackbar>
+    <!-- <vue3-snackbar bottom right :duration="4000"></vue3-snackbar> -->
   </div>
 </template>
 
 <script>
 import authService from "../services/authService";
-import snackbar from "../components/snackbar.vue";
 import textfield from "../components/textfield.vue";
 
 export default {
   components: {
-    snackbar,
     textfield,
   },
   data() {
@@ -56,11 +50,6 @@ export default {
       email: "",
       password: "",
       loading: false,
-      snackbar: {
-        show: false,
-        message: "",
-        type: "",
-      },
     };
   },
   methods: {
@@ -95,25 +84,22 @@ export default {
             localStorage.setItem("remoteph_user_name", response.data.user.name);
 
             // display snackbar
-            this.snackbar = {
-              show: true,
-              message: "You have successfully login",
-            };
+            this.$snackbar.add({
+              type: "success",
+              text: "You have successfully login",
+            });
 
             // added timeout, I didn't implement state management so I just did a something like a hacky way and add a delay for the snackbar to display and be able to see by the users
-            setTimeout(function () {
-              thisvue.$router.push("/home");
-            }, 1500);
+            thisvue.$router.push("/home");
           }
         })
         .catch((err) => {
           this.loading = false;
 
-          this.snackbar = {
-            show: true,
-            message: "Error while logging in",
+          this.$snackbar.add({
             type: "error",
-          };
+            text: "Error while logging in",
+          });
         });
     },
   },

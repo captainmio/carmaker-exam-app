@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+import { useSnackbar } from "vue3-snackbar";
 </script>
 
 <template>
@@ -8,7 +9,10 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink to="/about">About</RouterLink>
       </nav> -->
 
-  <RouterView />
+  <div>
+    <RouterView />
+    <vue3-snackbar bottom right :duration="4000"></vue3-snackbar>
+  </div>
 </template>
 
 <style scoped>

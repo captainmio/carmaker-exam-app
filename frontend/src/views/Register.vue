@@ -59,23 +59,16 @@
           </div>
         </div>
       </div>
-      <snackbar
-        v-if="snackbar.show"
-        :message="snackbar.message"
-        :type="snackbar.type"
-      ></snackbar>
     </div>
   </div>
 </template>
 
 <script>
 import authService from "../services/authService";
-import snackbar from "../components/snackbar.vue";
 import textfield from "../components/textfield.vue";
 
 export default {
   components: {
-    snackbar,
     textfield,
   },
   data() {
@@ -88,11 +81,6 @@ export default {
       },
       errors: {},
       loading: false,
-      snackbar: {
-        show: false,
-        message: "",
-        type: "",
-      },
     };
   },
 
@@ -115,6 +103,10 @@ export default {
 
           if (resp.status === "success") {
             this.resetForm();
+            this.$snackbar.add({
+              type: "success",
+              text: "You have successfully registered an account",
+            });
             this.$router.push("/");
           }
         })
@@ -126,7 +118,10 @@ export default {
             thisvue.errors[key] = errordata[key][0];
           });
 
-          console.log(this.errors);
+          this.$snackbar.add({
+            type: "error",
+            text: "Error process",
+          });
         });
     },
     resetErrors() {
