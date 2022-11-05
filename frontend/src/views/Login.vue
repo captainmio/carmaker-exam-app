@@ -6,12 +6,16 @@
           <h1 class="text-center">Log into your account</h1>
           <div class="mb-3">
             <label for="email" class="form-label">Email Address</label>
-            <textfield type="text" v-model="email" />
+            <textfield type="text" v-model="email" @keyup.enter="submit" />
           </div>
 
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <textfield type="password" v-model="password" />
+            <textfield
+              type="password"
+              v-model="password"
+              @keyup.enter="submit"
+            />
           </div>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">

@@ -6,7 +6,7 @@
           <h1 class="text-center">Register</h1>
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <textfield type="text" v-model="name" />
+            <textfield type="text" v-model="name" @keyup.enter="submit" />
             <span
               class="text-danger text-end d-block fst-italic"
               v-if="errors && errors.name"
@@ -16,7 +16,7 @@
           </div>
           <div class="mb-3">
             <label for="emailaddress" class="form-label">Email address</label>
-            <textfield type="text" v-model="email" />
+            <textfield type="text" v-model="email" @keyup.enter="submit" />
             <span
               class="text-danger text-end d-block fst-italic"
               v-if="errors && errors.email"
@@ -26,7 +26,11 @@
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <textfield type="password" v-model="password" />
+            <textfield
+              type="password"
+              v-model="password"
+              @keyup.enter="submit"
+            />
             <span
               class="text-danger text-end d-block fst-italic"
               v-if="errors && errors.password"
@@ -38,7 +42,11 @@
             <label for="confirmpassword" class="form-label"
               >Confirm Password</label
             >
-            <textfield type="password" v-model="password_confirmation" />
+            <textfield
+              type="password"
+              v-model="password_confirmation"
+              @keyup.enter="submit"
+            />
           </div>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
