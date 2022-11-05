@@ -42,13 +42,22 @@
           </div>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button
+            <!-- <button
               class="btn btn-primary btn-lg"
               @click="submit()"
               :disabled="loading"
             >
               Register
-            </button>
+            </button> -->
+
+            <btn
+              :onClick="submit"
+              :disable="loading"
+              color="btn-success"
+              type="button"
+            >
+              Register
+            </btn>
           </div>
 
           <div class="login-links pt-5">
@@ -66,10 +75,12 @@
 <script>
 import authService from "../services/authService";
 import textfield from "../components/textfield.vue";
+import btn from "../components/button.vue";
 
 export default {
   components: {
     textfield,
+    btn,
   },
   data() {
     return {
@@ -87,7 +98,6 @@ export default {
   methods: {
     submit() {
       this.loading = true;
-      this.resetErrors();
       let data = {
         name: this.name,
         email: this.email,
@@ -111,6 +121,7 @@ export default {
           }
         })
         .catch((err) => {
+          this.resetErrors();
           this.loading = false;
           let errordata = err.response.data.errors;
           let thisvue = this;

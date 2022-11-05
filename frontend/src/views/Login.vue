@@ -15,13 +15,21 @@
           </div>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button
+            <!-- <button
               class="btn btn-primary btn-lg"
               @click="submit()"
               :disabled="loading"
             >
               Login
-            </button>
+            </button> -->
+            <btn
+              :onClick="submit"
+              :disable="loading"
+              color="btn-success"
+              type="button"
+            >
+              Submit
+            </btn>
           </div>
 
           <div class="login-links pt-5">
@@ -33,17 +41,18 @@
         </div>
       </div>
     </div>
-    <!-- <vue3-snackbar bottom right :duration="4000"></vue3-snackbar> -->
   </div>
 </template>
 
 <script>
 import authService from "../services/authService";
 import textfield from "../components/textfield.vue";
+import btn from "../components/button.vue";
 
 export default {
   components: {
     textfield,
+    btn,
   },
   data() {
     return {
