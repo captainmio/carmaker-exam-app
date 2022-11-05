@@ -42,7 +42,11 @@
           </div>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary btn-lg" @click="submit()">
+            <button
+              class="btn btn-primary btn-lg"
+              @click="submit()"
+              :disabled="loading"
+            >
               Register
             </button>
           </div>
@@ -94,6 +98,7 @@ export default {
 
   methods: {
     submit() {
+      this.loading = true;
       this.resetErrors();
       let data = {
         name: this.name,
@@ -105,6 +110,7 @@ export default {
       authService
         .Register(data)
         .then((response) => {
+          this.loading = false;
           let resp = response.data;
 
           if (resp.status === "success") {
@@ -113,6 +119,7 @@ export default {
           }
         })
         .catch((err) => {
+          this.loading = false;
           let errordata = err.response.data.errors;
           let thisvue = this;
           Object.keys(errordata).map(function (key, value) {

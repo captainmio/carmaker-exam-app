@@ -65,8 +65,10 @@ export default {
   },
   methods: {
     submit() {
-      let thisvue = this;
       this.loading = true;
+
+      let thisvue = this;
+
       let data = {
         email: this.email,
         password: this.password,
@@ -75,6 +77,7 @@ export default {
       authService
         .Login(data)
         .then((response) => {
+          this.loading = false;
           if (response.data.user) {
             // add data from backend to localStorage
             localStorage.setItem(
