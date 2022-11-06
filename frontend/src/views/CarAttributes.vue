@@ -22,6 +22,7 @@
                   role="tab"
                   aria-controls="v-pills-Colors"
                   aria-selected="true"
+                  @click="activeContentFunc('colors')"
                 >
                   Colors
                 </button>
@@ -34,6 +35,7 @@
                   role="tab"
                   aria-controls="v-pills-Type"
                   aria-selected="false"
+                  @click="activeContentFunc('types')"
                 >
                   Types
                 </button>
@@ -46,6 +48,7 @@
                   role="tab"
                   aria-controls="v-pills-Manufacturer"
                   aria-selected="false"
+                  @click="activeContentFunc('manufacturers')"
                 >
                   Manufacturers
                 </button>
@@ -57,7 +60,7 @@
                   role="tabpanel"
                   aria-labelledby="v-pills-Colors-tab"
                 >
-                  <attrColors></attrColors>
+                  <attrColors v-if="activeContent === 'colors'"></attrColors>
                 </div>
                 <div
                   class="tab-pane fade"
@@ -65,7 +68,7 @@
                   role="tabpanel"
                   aria-labelledby="v-pills-Type-tab"
                 >
-                  <attrType></attrType>
+                  <attrType v-if="activeContent === 'types'"></attrType>
                 </div>
                 <div
                   class="tab-pane fade"
@@ -73,7 +76,9 @@
                   role="tabpanel"
                   aria-labelledby="v-pills-Manufacturer-tab"
                 >
-                  <attrManufacturer></attrManufacturer>
+                  <attrManufacturer
+                    v-if="activeContent === 'manufacturers'"
+                  ></attrManufacturer>
                 </div>
               </div>
             </div>
@@ -97,6 +102,16 @@ export default {
     attrColors,
     attrType,
     attrManufacturer,
+  },
+  data() {
+    return {
+      activeContent: "colors",
+    };
+  },
+  methods: {
+    activeContentFunc(value) {
+      this.activeContent = value;
+    },
   },
   created() {},
 };
