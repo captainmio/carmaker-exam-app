@@ -15,11 +15,7 @@ class AuthController extends Controller
         return $register->execute($request->validated());
     }
 
-    // public function login(LoginRequest $request, Login $login) {
-    //     return $login->execute($request->validated());
-    // }
-
-    public function login(Request $request) {
-        abort(403, "Session expired");
+    public function login(LoginRequest $request, Login $login) {
+        return $login->execute($request->validated());
     }
 }

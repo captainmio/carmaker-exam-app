@@ -1,6 +1,6 @@
 <template>
-  <layoutone active="home">
-    <slot name="main"> this is just a test </slot>
+  <layoutone active="car-attributes">
+    <slot name="main"> Car Attributes page </slot>
   </layoutone>
 </template>
 
@@ -10,6 +10,7 @@ export default {
   components: {
     layoutone,
   },
+  created() {},
 };
 </script>
 

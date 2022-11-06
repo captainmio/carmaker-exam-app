@@ -19,13 +19,6 @@
           </div>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <!-- <button
-              class="btn btn-primary btn-lg"
-              @click="submit()"
-              :disabled="loading"
-            >
-              Login
-            </button> -->
             <btn
               :onClick="submit"
               :disable="loading"
@@ -52,6 +45,8 @@
 import authService from "../services/authService";
 import textfield from "../components/textfield.vue";
 import btn from "../components/button.vue";
+
+import { useAuthStore } from "@/stores/useAuthStore";
 
 export default {
   components: {
@@ -82,19 +77,9 @@ export default {
           this.loading = false;
           if (response.data.user) {
             // add data from backend to localStorage
-            localStorage.setItem(
-              "remoteph_access_token",
-              response.data.access_token
-            );
-            localStorage.setItem(
-              "remoteph_user_email",
-              response.data.user.email
-            );
-            localStorage.setItem(
-              "remoteph_user_email_id",
-              response.data.user.id
-            );
-            localStorage.setItem("remoteph_user_name", response.data.user.name);
+            useAuthStore().LoginUser(response.data.user);
+
+            localStorage.setItem("access_token", response.data.access_token);
 
             // display snackbar
             this.$snackbar.add({
