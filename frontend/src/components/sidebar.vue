@@ -41,7 +41,9 @@
         class="dropdown-menu dropdown-menu-dark text-small shadow"
         aria-labelledby="dropdownUser1"
       >
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li>
+          <button class="dropdown-item" @click="logoutxFunc()">Sign out</button>
+        </li>
       </ul>
     </div>
   </div>
@@ -49,6 +51,7 @@
 
 <script>
 import { useAuthStore } from "@/stores/useAuthStore";
+import authService from "../services/authService";
 
 export default {
   props: {
@@ -61,6 +64,17 @@ export default {
     return {
       full_name: "",
     };
+  },
+  methods: {
+    logoutxFunc() {
+      setTimeout(function () {
+        localStorage.removeItem("access_token");
+      }, 3000);
+      authService.Logout().then((response) => {
+        useAuthStore().LoginUser({}, false);
+        this.$router.push("/");
+      });
+    },
   },
   created() {
     this.full_name = useAuthStore().getUser.name;

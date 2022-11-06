@@ -1,6 +1,13 @@
 <template>
   <layoutone active="home">
-    <slot name="main"> this is just a test </slot>
+    <slot name="main">
+      <h1>Car Maker</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12"></div>
+        </div>
+      </div>
+    </slot>
   </layoutone>
 </template>
 

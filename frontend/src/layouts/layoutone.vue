@@ -22,7 +22,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+h1 {
+  margin-left: 20px;
+}
+
 .divmain {
   min-height: 880px;
 }

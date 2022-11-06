@@ -12,9 +12,9 @@ export const useAuthStore = defineStore('auth', {
       getUserAccessToken: (state) => state.access_token,
     },
     actions: {
-      LoginUser(payload) {
+      LoginUser(payload, isAuthenticate) {
         this.user = payload;
-        this.isAuthenticated = true;
+        this.isAuthenticated = isAuthenticate;
       },
     },
   })

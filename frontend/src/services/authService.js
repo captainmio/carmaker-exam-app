@@ -6,6 +6,12 @@ const services = {
     },
     Register: (data) => {
       return axios.post(`/register`, data)
+    },
+    CurrentUser: () => {
+      return axios.get(`/me`)
+    },
+    Logout: () => {
+      return axios.get(`/logout`)
     }
 }
 

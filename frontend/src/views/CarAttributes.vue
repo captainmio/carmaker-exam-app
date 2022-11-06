@@ -1,10 +1,10 @@
 <template>
   <layoutone active="car-attributes">
     <slot name="main">
+      <h1>Car Attributes</h1>
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <h1>Car Attributes</h1>
             <br />
             <div class="d-flex align-items-start w-100">
               <div

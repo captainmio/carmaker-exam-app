@@ -24,6 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+Route::get('logout', [AuthController::class, 'logout']);
+Route::get('me', [AuthController::class, 'loginUser']);
 
 Route::prefix('car')->middleware('auth:api')->group(function () {
     Route::prefix('color')->group(function () {

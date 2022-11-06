@@ -77,7 +77,7 @@ export default {
           this.loading = false;
           if (response.data.user) {
             // add data from backend to localStorage
-            useAuthStore().LoginUser(response.data.user);
+            useAuthStore().LoginUser(response.data.user, true);
 
             localStorage.setItem("access_token", response.data.access_token);
 
