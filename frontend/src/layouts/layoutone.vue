@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid g-0 homelayout">
     <div class="row g-0">
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <sidebar></sidebar>
       </div>
-      <div class="col-lg-9 divmain">
+      <div class="col-lg-10 divmain">
         <main>
           <slot></slot>
         </main>

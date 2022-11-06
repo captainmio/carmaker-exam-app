@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CarColorController;
+use App\Http\Controllers\Api\CarTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+
+Route::prefix('car')->middleware('auth:api')->group(function () {
+    Route::prefix('color')->group(function () {
+        Route::get('/', [CarColorController::class, 'index']);
+        Route::post('/', [CarColorController::class, 'store']);
+        Route::delete('/{id}', [CarColorController::class, 'destroy']);
+    });
+
+    Route::prefix('type')->group(function () {
+        Route::get('/', [CarTypeController::class, 'index']);
+        Route::post('/', [CarTypeController::class, 'store']);
+        Route::delete('/{id}', [CarTypeController::class, 'destroy']);
+    });
+});
