@@ -4,7 +4,7 @@
     <hr />
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <RouterLink to="/home" class="nav-link active" aria-current="page">
+        <RouterLink to="/home" class="nav-link text-white" aria-current="page">
           Car Maker
         </RouterLink>
       </li>
@@ -62,7 +62,6 @@ export default {
       full_name: "",
     };
   },
-
   created() {
     this.full_name = useAuthStore().getUser.name;
   },
