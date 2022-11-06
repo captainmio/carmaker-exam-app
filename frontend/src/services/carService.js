@@ -18,6 +18,15 @@ const services = {
     },
     deleteType: (id) => {
       return axios.delete(`/car/type/${id}`)
+    },
+    getManufacturers: () => {
+      return axios.get(`/car/manufacturer`)
+    },
+    addManufacturer: (data) => {
+      return axios.post(`/car/manufacturer`, data)
+    },
+    deleteManufacturer: (id) => {
+      return axios.delete(`/car/manufacturer/${id}`)
     }
 }
 

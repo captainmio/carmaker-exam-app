@@ -73,7 +73,7 @@
                   role="tabpanel"
                   aria-labelledby="v-pills-Manufacturer-tab"
                 >
-                  ManuFacturer tab
+                  <attrManufacturer></attrManufacturer>
                 </div>
               </div>
             </div>
@@ -89,12 +89,14 @@ import layoutone from "@/layouts/layoutone.vue";
 
 import attrColors from "../components/car-attributes/colorform.vue";
 import attrType from "../components/car-attributes/typeform.vue";
+import attrManufacturer from "../components/car-attributes/manufacturerform.vue";
 
 export default {
   components: {
     layoutone,
     attrColors,
     attrType,
+    attrManufacturer,
   },
   created() {},
 };

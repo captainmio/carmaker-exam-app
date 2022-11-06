@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CarColorController;
 use App\Http\Controllers\Api\CarTypeController;
+use App\Http\Controllers\Api\CarManufacturerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,5 +36,11 @@ Route::prefix('car')->middleware('auth:api')->group(function () {
         Route::get('/', [CarTypeController::class, 'index']);
         Route::post('/', [CarTypeController::class, 'store']);
         Route::delete('/{id}', [CarTypeController::class, 'destroy']);
+    });
+
+    Route::prefix('manufacturer')->group(function () {
+        Route::get('/', [CarManufacturerController::class, 'index']);
+        Route::post('/', [CarManufacturerController::class, 'store']);
+        Route::delete('/{id}', [CarManufacturerController::class, 'destroy']);
     });
 });
