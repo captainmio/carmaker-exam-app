@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CarColorController;
 use App\Http\Controllers\Api\CarTypeController;
 use App\Http\Controllers\Api\CarManufacturerController;
+use App\Http\Controllers\Api\CarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,11 @@ Route::get('logout', [AuthController::class, 'logout']);
 Route::get('me', [AuthController::class, 'loginUser']);
 
 Route::prefix('car')->middleware('auth:api')->group(function () {
+
+    Route::get('/attributes', [CarController::class, 'getAttributes']);
+    Route::post('/', [CarController::class, 'store']);
+    Route::get('/', [CarController::class, 'index']);
+
     Route::prefix('color')->group(function () {
         Route::get('/', [CarColorController::class, 'index']);
         Route::post('/', [CarColorController::class, 'store']);

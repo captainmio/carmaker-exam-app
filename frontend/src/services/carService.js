@@ -1,6 +1,15 @@
 import axios from 'axios'
 
 const services = {
+    getAllCarAttributes: () => {
+      return axios.get(`/car/attributes`)
+    },
+    createCar: (data) => {
+      return axios.post(`/car`, data)
+    },
+    getCars: () => {
+      return axios.get(`/car`)
+    },
     getColors: () => {
       return axios.get(`/car/color`)
     },

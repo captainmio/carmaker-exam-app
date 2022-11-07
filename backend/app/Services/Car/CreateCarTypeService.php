@@ -13,7 +13,7 @@ class CreateCarTypeService {
             $result->save();
     
             if($result->id) {
-                return response()->json(['status' => 'success', 'message' => 'Type successfully addess'], 200);
+                return response()->json(['status' => 'success', 'message' => 'Type successfully added'], 200);
             } else {
                 return abort(404, 'Error when creating type');
             }

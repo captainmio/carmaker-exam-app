@@ -28,6 +28,16 @@ h1 {
 }
 
 .divmain {
-  min-height: 880px;
+  min-height: 938px;
+}
+
+@media (max-width: 768px) {
+  .divmain {
+    min-height: 100%;
+  }
+
+  h1 {
+    margin-top: 40px;
+  }
 }
 </style>
